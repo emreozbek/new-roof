@@ -1,15 +1,24 @@
 import React from "react";
-import { render } from "react-dom";
-import ReduxThunk from "redux-thunk";
+import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { createStore, applyMiddleware } from "redux";
-import Index from "./components/Index";
-import reducer from "./reducers/Index";
+import { ConnectedRouter } from "react-router-redux";
+import createHistory from "history/createBrowserHistory";
+import "./scss/Index.scss";
 
-const store = createStore(reducer, {}, applyMiddleware(ReduxThunk));
-render(
-  <Provider store={store}>
-    <Index />
-  </Provider>,
-  document.getElementById("app")
-);
+import Index from "./components/Index";
+import configureStore from "./reducers/ConfigureStore";
+
+const history = createHistory();
+const store = configureStore(undefined, history);
+
+const render = Component => {
+  ReactDOM.render(
+    <Provider store={store}>
+      <ConnectedRouter history={history}>
+        <Component />
+      </ConnectedRouter>
+    </Provider>,
+    document.getElementById("app")
+  );
+};
+render(Index);

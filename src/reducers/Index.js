@@ -1,5 +1,8 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from "redux";
+import Config from "./Config";
 
-const rootReducer = combineReducers({});
+const mainReducer = combineReducers({
+  Config
+});
 
-export default rootReducer;
+export default mainReducer;

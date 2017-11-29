@@ -1,5 +1,7 @@
+/*eslint one-var:0*/
 /*eslint no-var:0*/
-var port = 3000; //eslint-disable-line no-var
+var port = 3000,
+  path = require("path");
 module.exports = {
   entry: ["./src/App.js"],
   output: {
@@ -9,20 +11,7 @@ module.exports = {
     rules: [
       {
         test: /\.(css|scss)$/,
-        use: [
-          {
-            loader: "style-loader"
-          },
-          {
-            loader: "postcss-loader"
-          },
-          {
-            loader: "css-loader"
-          },
-          {
-            loader: "sass-loader"
-          }
-        ]
+        loaders: ["style-loader", "css-loader", "postcss-loader", "sass-loader"]
       },
       {
         test: /\.js$/,
@@ -41,7 +30,7 @@ module.exports = {
     ]
   },
   devServer: {
-    contentBase: "./",
+    contentBase: path.join(__dirname, "build"),
     watchContentBase: true,
     port: port,
     inline: true,
