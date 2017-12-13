@@ -2,7 +2,7 @@ import React from "react";
 import { shallow, configure } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 
-import Index from "../../src/components/Index";
+import Index from "../../src/components/Wrapper";
 
 configure({ adapter: new Adapter() });
 

@@ -5,7 +5,7 @@ import { ConnectedRouter } from "react-router-redux";
 import createHistory from "history/createBrowserHistory";
 import "./scss/Index.scss";
 
-import Index from "./components/Index";
+import Index from "./components/Wrapper";
 import configureStore from "./reducers/ConfigureStore";
 
 const history = createHistory();

@@ -1,9 +1,7 @@
-/*eslint one-var:0*/
-/*eslint no-var:0*/
-var port = 3000,
+var config = require("./app-config"),
   path = require("path");
 module.exports = {
-  entry: ["./src/App.js"],
+  entry: "./src/App.js",
   output: {
     filename: "./build/bundle.js"
   },
@@ -32,7 +30,8 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, "build"),
     watchContentBase: true,
-    port: port,
+    historyApiFallback: true,
+    port: config.development.port,
     inline: true,
     headers: {
       "Access-Control-Allow-Origin": "*",
