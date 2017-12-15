@@ -1,6 +1,6 @@
 import express from "express";
 import config from "../app-config";
-import NavigationManager from "./business/Navigation";
+import * as Presentations from "./04-Presentation/Index";
 
 const app = express();
 app.use((req, res, next) => {
@@ -11,12 +11,10 @@ app.use((req, res, next) => {
   );
   next();
 });
-app.get("/", (req, res) => {
-  const navigation = new NavigationManager();
-  navigation.getAllNavigation().then(data => {
-    res.send(data);
-  });
-});
+
+Presentations.Navigation(app);
+Presentations.User(app);
+Presentations.ServerRendering(app);
 
 app.listen(config.server.port, () => {
   const str = "Example app listening on port ";

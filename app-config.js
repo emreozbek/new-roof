@@ -13,4 +13,4 @@ const config = {
   client: {}
 };
 
-export default config;
+module.exports = config;

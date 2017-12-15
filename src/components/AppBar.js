@@ -1,39 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { withStyles } from "material-ui/styles";
 import classNames from "classnames";
-import AppBar from "material-ui/AppBar";
-import Toolbar from "material-ui/Toolbar";
-import IconButton from "material-ui/IconButton";
+import { withStyles } from "material-ui/styles";
+import { AppBar, Toolbar, IconButton, Typography } from "material-ui";
 import MenuIcon from "material-ui-icons/Menu";
 import AccountCircle from "material-ui-icons/AccountCircle";
-import Typography from "material-ui/Typography";
 
-const drawerWidth = 240;
-
-const styles = theme => ({
-  acccountAlign: {
-    display: "flex",
-    justifyContent: "flex-end"
-  },
-  flex: {
-    flex: 1
-  },
-  appBar: {
-    transition: theme.transitions.create(["width", "margin"], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
-    })
-  },
-  appBarShift: {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(["width", "margin"], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen
-    })
-  }
-});
+import styles from "./styles/AppBar";
 
 class AppBarComponent extends Component {
   constructor() {

@@ -1,40 +1,13 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { withStyles } from "material-ui/styles";
 import classNames from "classnames";
-import List, { ListItem, ListItemIcon, ListItemText } from "material-ui/List";
-import { Drawer, Divider, IconButton, Typography } from "material-ui";
+import { Drawer, Divider, IconButton, Typography, List } from "material-ui";
+import { withStyles } from "material-ui/styles";
+import { ListItem, ListItemIcon, ListItemText } from "material-ui/List";
 import { DataUsage, Dashboard, Navigation } from "material-ui-icons";
 
-const menuWidth = 240;
-const styles = theme => ({
-  menu: {
-    zIndex: 0
-  },
-  drawerPaper: {
-    position: "relative",
-    height: "100%",
-    width: menuWidth,
-    transition: theme.transitions.create("width", {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen
-    })
-  },
-  drawerPaperClose: {
-    width: 60,
-    overflowX: "hidden",
-    transition: theme.transitions.create("width", {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
-    })
-  },
-  menuHeader: {
-    display: "flex",
-    alignItems: "center",
-    padding: "0 4px",
-    ...theme.mixins.toolbar
-  }
-});
+import styles from "./styles/MainMenu";
+
 class MainMenu extends Component {
   constructor() {
     super();
@@ -43,7 +16,7 @@ class MainMenu extends Component {
     };
   }
   componentDidMount() {
-    fetch("http://localhost:4000/")
+    fetch("http://localhost:4000/Navigation/GetAll")
       .then(data => {
         return data.json();
       })
