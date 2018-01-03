@@ -3,13 +3,7 @@ const AppConfig = {
     port: 3000
   },
   host: "http://localhost",
-  database: {
-    path: "mongodb://localhost/"
-  },
-  server: {
-    port: 4000,
-    header: []
-  },
+  server: { port: 4000 },
   client: {},
   project: {
     title: "Material CMS",

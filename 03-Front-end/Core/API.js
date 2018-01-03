@@ -2,16 +2,19 @@ import axios from "axios";
 
 class API {
   constructor() {
-    this.defaults = {
-      headers: { "Content-Type": "application/x-www-form-urlencoded" }
-    };
-    this.options = {};
+    this.instance = axios.create({
+      headers: {
+        Authorization: `${JSON.parse(sessionStorage.user).token}`,
+        "Content-Type": "application/json"
+      }
+    });
   }
-  get(url, data = {}, options = {}) {
-    return axios.get(url, data);
+  get(url, data = null) {
+    return this.instance.get(url, data);
   }
-  post(url, data = {}, options = {}) {
-    return axios.post(url, data);
+  post(url, data = null) {
+    return this.instance.post(url, data);
   }
 }
+
 export default API;

@@ -6,7 +6,10 @@ const styles = theme => ({
     margin: theme.spacing.unit
   },
   card: {
-    padding: [theme.spacing.unit * 4, theme.spacing.unit * 2]
+    paddingLeft: theme.spacing.unit * 2,
+    paddingRight: theme.spacing.unit * 2,
+    paddingTop: theme.spacing.unit * 4,
+    paddingBottom: theme.spacing.unit * 4
   },
   actions: {
     display: "flex",

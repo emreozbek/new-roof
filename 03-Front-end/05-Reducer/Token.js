@@ -5,10 +5,11 @@ const Token = (state = store, action) => {
   switch (action.type) {
     case actions.SET_TOKEN: {
       return {
-        ...state,
-        user: action.data.user,
-        token: action.data.token
+        token: action.data
       };
+    }
+    case actions.DESTROY_TOKEN: {
+      return { token: "" };
     }
     default:
       return state;

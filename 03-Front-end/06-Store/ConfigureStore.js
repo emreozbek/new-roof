@@ -5,9 +5,15 @@ import { routerMiddleware } from "react-router-redux";
 import rootReducer from "../05-Reducer/Index";
 
 const configureStore = (prelodedState, history) => {
-  const middlewares = [thunk, routerMiddleware(history)];
-  const composed = [applyMiddleware(...middlewares)];
-  const store = createStore(rootReducer, prelodedState, compose(...composed));
+  const middleware = [thunk, routerMiddleware(history)];
+  const composed = [applyMiddleware(...middleware)];
+  //prelodedState
+  const store = createStore(
+    rootReducer,
+    window.__REDUX_DEVTOOLS_EXTENSION__ &&
+      window.__REDUX_DEVTOOLS_EXTENSION__(),
+    compose(...composed)
+  );
   return store;
 };
 

@@ -1,4 +1,4 @@
-const texts = {
+const en = {
   login: {
     title: "Welcome to Material CMS",
     username: "User Name",
@@ -8,11 +8,11 @@ const texts = {
     login: "Login"
   },
   messages: {
-    success: {},
-    info: {},
-    warning: {},
-    error: {}
+    success: [],
+    info: [],
+    warning: [],
+    error: ["The email or password is wrong.", "500 Server Internal Error"]
   }
 };
 
-export default texts;
+export default en;

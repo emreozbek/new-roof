@@ -10,6 +10,10 @@
   },
   "rules": {
     "react/jsx-filename-extension": "off",
+    "react/jsx-no-bind": {
+      "allowBind": true
+    },
+    "react/forbid-prop-types": [false, ["object"]],
     "linebreak-style": 0,
     "jsx-a11y/anchor-is-valid": [ "error", {
       "components": [ "Link" ],

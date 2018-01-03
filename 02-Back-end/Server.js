@@ -1,25 +1,43 @@
 import express from "express";
 import bodyParser from "body-parser";
-import config from "../04-Config/App";
+import Connection from "./Core/Connection";
+import Token from "./Core/Token";
 import * as Presentations from "./04-Presentation/Index";
+import { serverConfig } from "./Config";
 
 const app = express();
+Connection();
+
+app.set("trust proxy", 1);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
+  serverConfig.header.map(item => res.header(item.key, item.value));
+
+  if (req.method !== "OPTIONS") {
+    const tokenControl = new Token();
+    const token = req.headers.authorization;
+    const url = req.originalUrl;
+    if (tokenControl.checkWhiteList(url)) next();
+    else if (tokenControl.verify(token)) {
+      const user = tokenControl.decode(token);
+      const role = new Presentations.Role();
+      role.CheckAuthority(url, user.authorized).then(result => {
+        if (result.length > 0) next();
+        else
+          res.json({
+            success: false,
+            explain: "Authorization Error."
+          });
+      });
+    }
+  } else next();
 });
 
 Presentations.Navigation(app);
 Presentations.User(app);
 
-app.listen(config.server.port, () => {
+app.listen(serverConfig.port, () => {
   const str = "Example app listening on port ";
-  console.log(str + config.server.port);
+  console.log(str + serverConfig.port);
 });

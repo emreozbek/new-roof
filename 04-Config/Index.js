@@ -1,6 +1,5 @@
-export routes from "./Routes";
-export errors from "./Messages";
-import app from "./App";
-import * as lang from "./Languages/Index";
-const language = lang[app.project.language];
-export { language, app };
+export Routes from "./Routes";
+import App from "./App";
+import * as Lang from "./Languages/Index";
+const Language = Lang[App.project.language];
+export { Language, App };

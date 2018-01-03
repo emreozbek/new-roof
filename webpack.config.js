@@ -1,5 +1,6 @@
 var config = require("./04-Config/App"),
   path = require("path");
+
 module.exports = {
   entry: "./03-Front-end/App.js",
   output: {

@@ -1,5 +1,4 @@
 class Crud {
-  constructor() {}
   GetAll() {
     return this.model.find({});
   }

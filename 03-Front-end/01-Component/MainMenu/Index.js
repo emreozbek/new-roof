@@ -1,12 +1,22 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import { Drawer, Divider, IconButton, Typography, List } from "material-ui";
-import { withStyles } from "material-ui/styles";
-import { ListItem, ListItemIcon, ListItemText } from "material-ui/List";
+import {
+  Drawer,
+  Divider,
+  IconButton,
+  Typography,
+  List,
+  withStyles,
+  ListItem,
+  ListItemIcon,
+  ListItemText
+} from "material-ui";
 import { DataUsage, Dashboard } from "material-ui-icons";
 
 import styles from "./Style";
+import Routes from "../../../04-Config/Routes";
+import API from "../../Core/API";
 
 class MainMenu extends Component {
   constructor() {
@@ -14,27 +24,24 @@ class MainMenu extends Component {
     this.state = {
       menuList: []
     };
+    this.API = new API();
   }
   componentDidMount() {
-    fetch("http://localhost:4000/Navigation/GetAll")
+    this.API.post(Routes.navigation.GetAll)
+      .then(result => result.data)
       .then(data => {
-        return data.json();
-      })
-      .then(data => {
-        this.setState({ menuList: data });
+        if (data.success) this.setState({ menuList: data.data });
       });
   }
-  getMenu() {
-    return this.state.menuList.map((item, index) => {
-      return (
-        <ListItem button key={index}>
-          <ListItemIcon>
-            <Dashboard />
-          </ListItemIcon>
-          <ListItemText primary={item.label} />
-        </ListItem>
-      );
-    });
+  GetMenu() {
+    return this.state.menuList.map((item, index) => (
+      <ListItem button key={index}>
+        <ListItemIcon>
+          <Dashboard />
+        </ListItemIcon>
+        <ListItemText primary={item.label} />
+      </ListItem>
+    ));
   }
   render() {
     const { classes, menuState } = this.props;
@@ -60,7 +67,7 @@ class MainMenu extends Component {
             </Typography>
           </div>
           <Divider />
-          <List>{this.getMenu()}</List>
+          <List>{this.GetMenu()}</List>
           <Divider />
         </div>
       </Drawer>
@@ -68,9 +75,7 @@ class MainMenu extends Component {
   }
 }
 MainMenu.propTypes = {
-  width: PropTypes.number.isRequired,
   classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired,
   menuState: PropTypes.bool.isRequired
 };
 

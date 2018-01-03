@@ -1,12 +1,12 @@
 import mongoose from "mongoose";
 
-import config from "../../04-Config/App";
+import { databaseConfig } from "../Config";
 
 let connect;
 const Connection = (db = "materialCMS") => {
   mongoose.Promise = global.Promise;
-  if (connect == null) {
-    connect = mongoose.connect(config.database.path + db, {
+  if (!connect) {
+    connect = mongoose.connect(databaseConfig.path + db, {
       useMongoClient: true
     });
   }

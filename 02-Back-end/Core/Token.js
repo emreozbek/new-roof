@@ -1,18 +1,28 @@
 import jwt from "jsonwebtoken";
-
-const KEY = "QD9G1NKUH2V4KK";
+import { KEY } from "../Config";
 
 class Token {
-  createToken(username, email) {
-    const user = {
-      username,
-      email
-    };
-    const token = jwt.sign(user, KEY, { expiresIn: 4000 });
+  whiteList = ["/User/Login"];
+  create(data) {
+    const token = jwt.sign(data, KEY, { expiresIn: 4000 });
     return token;
   }
-  destroyToken() {}
-  isToken() {}
+  checkWhiteList(url) {
+    if (this.whiteList.indexOf(url) === -1) return false;
+    return true;
+  }
+  verify(token) {
+    let res = true;
+    try {
+      jwt.verify(token, KEY);
+    } catch (e) {
+      res = false;
+    }
+    return res;
+  }
+  decode(token) {
+    return jwt.decode(token, KEY);
+  }
 }
 
 export default Token;

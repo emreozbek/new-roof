@@ -8,35 +8,36 @@ import MainMenu from "../MainMenu";
 import Content from "../Content";
 import styles from "./Style";
 
-const menuWidth = 440;
-
 class Layout extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      open: false
+    };
   }
-  state = {
-    open: false
-  };
-  handleMenu(state) {
+  HandleMenu(state) {
     this.setState({ open: state });
   }
   render() {
-    const { classes } = this.props;
+    const { actions, children } = this.props;
+    const { open } = this.state;
     return (
       <Grid container spacing={0}>
         <AppBar
           title="Dashboard"
-          menuState={this.state.open}
-          handleMenu={this.handleMenu.bind(this)}
+          menuState={open}
+          HandleMenu={this.HandleMenu.bind(this)}
+          Logout={actions.DestroyToken}
         />
-        <MainMenu menuState={this.state.open} width={menuWidth} />
-        <Content>{this.props.children}</Content>
+        <MainMenu menuState={open} />
+        <Content>{children}</Content>
       </Grid>
     );
   }
 }
 Layout.propTypes = {
-  classes: PropTypes.object.isRequired
+  actions: PropTypes.object.isRequired,
+  children: PropTypes.element
 };
 
 export default withStyles(styles)(Layout);
