@@ -14,6 +14,7 @@ import {
   CardContent
 } from "material-ui";
 
+import SnackBar from "../SnackBar/Index";
 import API from "../../Core/API";
 import * as Config from "../../../04-Config/Index";
 import styles from "./Style";
@@ -25,9 +26,10 @@ class Login extends Component {
     this.state = {
       processing: false,
       usernameError: false,
-      passwordError: false
+      passwordError: false,
+      snackBarShow: false,
+      snackBarMessage: ""
     };
-    this.message = "";
     this.API = new API();
   }
   OnSubmitForm() {
@@ -49,7 +51,11 @@ class Login extends Component {
             this.props.actions.SetToken({
               token: result.data.token
             });
-          this.message = result.data.explain;
+          else
+            this.setState({
+              snackBarShow: true,
+              snackBarMessage: result.data.explain
+            });
         });
       }
     });
@@ -73,6 +79,10 @@ class Login extends Component {
           })}
         />
         <Card className={classes.card}>
+          <SnackBar
+            open={this.state.snackBarShow}
+            message={this.state.snackBarMessage}
+          />
           <form noValidate autoComplete="off">
             <CardContent>
               <Typography type="title">
@@ -104,13 +114,14 @@ class Login extends Component {
                       this.remember = ref;
                     }}
                     value="checked"
+                    disabled
                   />
                 }
                 label={Config.Language.login.rememberMe}
               />
             </CardContent>
             <CardActions className={classes.actions}>
-              <Button className={classes.button} dense>
+              <Button className={classes.button} dense disabled>
                 {Config.Language.login.forgotPassword}
               </Button>
               <Button

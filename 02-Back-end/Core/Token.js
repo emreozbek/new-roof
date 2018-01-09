@@ -2,26 +2,29 @@ import jwt from "jsonwebtoken";
 import { KEY } from "../Config";
 
 class Token {
-  whiteList = ["/User/Login"];
-  create(data) {
-    const token = jwt.sign(data, KEY, { expiresIn: 4000 });
-    return token;
+  constructor() {
+    this.whiteList = ["/User/Login"];
+    this.KEY = KEY;
   }
-  checkWhiteList(url) {
+
+  Create(data) {
+    return jwt.sign(data, this.KEY, { expiresIn: 4000 });
+  }
+  CheckWhiteList(url) {
     if (this.whiteList.indexOf(url) === -1) return false;
     return true;
   }
-  verify(token) {
+  Verify(token) {
     let res = true;
     try {
-      jwt.verify(token, KEY);
+      jwt.verify(token, this.KEY);
     } catch (e) {
       res = false;
     }
     return res;
   }
-  decode(token) {
-    return jwt.decode(token, KEY);
+  Decode(token) {
+    return jwt.decode(token, this.KEY);
   }
 }
 

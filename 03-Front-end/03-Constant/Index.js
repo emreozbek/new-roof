@@ -1,2 +1,3 @@
-export * as Config from "./Config";
-export * as Token from "./Token";
+import * as Token from "./Token";
+
+export { Token };

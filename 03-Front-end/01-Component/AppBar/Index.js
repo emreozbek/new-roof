@@ -1,14 +1,15 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import { withStyles } from "material-ui/styles";
 import {
   AppBar,
   Toolbar,
   IconButton,
   Typography,
   Menu,
-  MenuItem
+  MenuItem,
+  withStyles
 } from "material-ui";
 import { Menu as MenuIcon, AccountCircle } from "material-ui-icons";
 
@@ -26,14 +27,14 @@ class AppBarComp extends Component {
   HandleMenu() {
     this.props.HandleMenu(!this.props.menuState);
   }
-  HandleClick = event => {
+  HandleClick(event) {
     this.setState({ anchorEl: event.currentTarget, open: true });
-  };
-  HandleClose = () => {
+  }
+  HandleClose() {
     this.setState({ anchorEl: null, open: false });
-  };
+  }
   render() {
-    const { classes, title, menuState, Logout } = this.props;
+    const { classes, title, menuState } = this.props;
     const { anchorEl, open } = this.state;
     return (
       <AppBar
@@ -59,7 +60,7 @@ class AppBarComp extends Component {
             <IconButton
               aria-owns={open ? "menu-appbar" : null}
               aria-haspopup="true"
-              onClick={this.HandleClick}
+              onClick={this.HandleClick.bind(this)}
               color="contrast"
             >
               <AccountCircle />
@@ -76,10 +77,14 @@ class AppBarComp extends Component {
                 horizontal: "right"
               }}
               open={open}
-              onClose={this.HandleClose}
+              onClose={this.HandleClose.bind(this)}
             >
-              <MenuItem onClick={this.HandleClose}>Profile</MenuItem>
-              <MenuItem onClick={Logout}>Logout</MenuItem>
+              <Link to="/profile">
+                <MenuItem>Profile</MenuItem>
+              </Link>
+              <Link to="/logout">
+                <MenuItem>Logout</MenuItem>
+              </Link>
             </Menu>
           </div>
         </Toolbar>
@@ -88,10 +93,15 @@ class AppBarComp extends Component {
   }
 }
 AppBarComp.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   classes: PropTypes.object.isRequired,
-  menuState: PropTypes.bool.isRequired,
-  HandleMenu: PropTypes.func.isRequired,
-  Logout: PropTypes.func.isRequired
+  menuState: PropTypes.bool,
+  HandleMenu: PropTypes.func
 };
+AppBarComp.defaultProps = {
+  title: "",
+  menuState: false,
+  HandleMenu: () => {}
+};
+
 export default withStyles(styles)(AppBarComp);

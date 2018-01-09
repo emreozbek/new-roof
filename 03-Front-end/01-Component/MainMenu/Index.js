@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
+import { Link } from "react-router-dom";
 import {
   Drawer,
   Divider,
@@ -12,7 +13,7 @@ import {
   ListItemIcon,
   ListItemText
 } from "material-ui";
-import { DataUsage, Dashboard } from "material-ui-icons";
+import * as Icons from "material-ui-icons";
 
 import styles from "./Style";
 import Routes from "../../../04-Config/Routes";
@@ -34,14 +35,19 @@ class MainMenu extends Component {
       });
   }
   GetMenu() {
-    return this.state.menuList.map((item, index) => (
-      <ListItem button key={index}>
-        <ListItemIcon>
-          <Dashboard />
-        </ListItemIcon>
-        <ListItemText primary={item.label} />
-      </ListItem>
-    ));
+    return this.state.menuList.map(item => {
+      const Icon = Icons[item.icon];
+      return (
+        <Link to={item.url} key={item.id}>
+          <ListItem button>
+            <ListItemIcon>
+              <Icon />
+            </ListItemIcon>
+            <ListItemText primary={item.label} />
+          </ListItem>
+        </Link>
+      );
+    });
   }
   render() {
     const { classes, menuState } = this.props;
@@ -57,10 +63,10 @@ class MainMenu extends Component {
         }}
         open={menuState}
       >
-        <div>
+        <div className={classes.drawerInner}>
           <div className={classes.menuHeader}>
             <IconButton>
-              <DataUsage />
+              <Icons.DataUsage />
             </IconButton>
             <Typography type="button" color="inherit" noWrap>
               Material UI CMS

@@ -1,7 +1,9 @@
 import RoleManager from "../03-Persistence/Role";
 
 class Roles {
-  manager = new RoleManager();
+  constructor() {
+    this.manager = new RoleManager();
+  }
   CheckAuthority(url, authorized) {
     return this.manager.CheckAuthority(url, authorized);
   }

@@ -18,9 +18,9 @@ app.use((req, res, next) => {
     const tokenControl = new Token();
     const token = req.headers.authorization;
     const url = req.originalUrl;
-    if (tokenControl.checkWhiteList(url)) next();
-    else if (tokenControl.verify(token)) {
-      const user = tokenControl.decode(token);
+    if (tokenControl.CheckWhiteList(url)) next();
+    else if (tokenControl.Verify(token)) {
+      const user = tokenControl.Decode(token);
       const role = new Presentations.Role();
       role.CheckAuthority(url, user.authorized).then(result => {
         if (result.length > 0) next();
@@ -39,5 +39,6 @@ Presentations.User(app);
 
 app.listen(serverConfig.port, () => {
   const str = "Example app listening on port ";
+  /* eslint no-console:0 */
   console.log(str + serverConfig.port);
 });

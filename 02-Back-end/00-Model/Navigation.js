@@ -7,6 +7,14 @@ const NavigationModel = () => {
     label: String,
     state: Number
   });
+  schema.set("toJSON", {
+    transform: (doc, ret) => {
+      /* eslint no-param-reassign:0 */
+      /* eslint no-underscore-dangle:0 */
+      ret.id = ret._id;
+      delete ret._id;
+    }
+  });
   const collection = "navigation";
 
   return (

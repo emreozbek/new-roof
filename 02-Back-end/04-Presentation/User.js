@@ -1,6 +1,6 @@
 import UserManager from "../03-Persistence/User";
 
-const routes = app => {
+const Routes = app => {
   const manager = new UserManager();
   app.post("/User/GetAll", (req, res) => {
     manager.GetAll(req, res);
@@ -14,4 +14,4 @@ const routes = app => {
   });
 };
 
-export default routes;
+export default Routes;

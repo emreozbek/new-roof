@@ -9,6 +9,7 @@ class SnackbarComponent extends Component {
     this.state = {
       open: props.open
     };
+    this.handleClose = this.HandleClose.bind(this);
   }
   componentWillReceiveProps(nextProps) {
     this.setState({ open: nextProps.open });
@@ -26,7 +27,7 @@ class SnackbarComponent extends Component {
         }}
         open={this.state.open}
         autoHideDuration={duration}
-        onClose={this.HandleClose.bind(this)}
+        onClose={this.handleClose}
         SnackbarContentProps={{
           "aria-describedby": "message-id"
         }}
@@ -36,7 +37,7 @@ class SnackbarComponent extends Component {
             key="close"
             aria-label="Close"
             color="inherit"
-            onClick={this.handleClose.bind(this)}
+            onClick={this.handleClose}
           >
             <CloseIcon />
           </IconButton>

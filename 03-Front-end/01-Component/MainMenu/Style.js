@@ -2,6 +2,9 @@ const styles = theme => ({
   menu: {
     zIndex: 0
   },
+  drawerInner: {
+    width: 240
+  },
   drawerPaper: {
     position: "relative",
     height: "100%",
@@ -9,7 +12,8 @@ const styles = theme => ({
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen
-    })
+    }),
+    overflowX: "hidden"
   },
   drawerPaperClose: {
     width: 60,

@@ -1,6 +1,6 @@
 import UserRepository from "../02-Repository/UserRepository";
 import Token from "../Core/Token";
-import { Language } from "../../04-Config";
+import { Language } from "../../04-Config/Index";
 
 class UserPersistence {
   constructor() {
@@ -12,8 +12,8 @@ class UserPersistence {
   Login(req, res, user) {
     this.repository.Login(user).then(data => {
       if (data) {
-        const token = new Token().create({
-          id: data._id,
+        const token = new Token().Create({
+          id: data.id,
           name: data.name,
           surname: data.surname,
           username: data.username,

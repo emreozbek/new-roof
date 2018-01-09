@@ -1,8 +1,6 @@
 import * as Token from "../03-Constant/Token";
-import API from "../Core/API";
-import Routes from "../../04-Config/Routes";
 
-export const SetToken = data => dispatch => {
+const SetToken = data => dispatch => {
   sessionStorage.user = JSON.stringify(data);
   return dispatch({
     type: Token.SET_TOKEN,
@@ -10,7 +8,7 @@ export const SetToken = data => dispatch => {
   });
 };
 
-export const DestroyToken = () => dispatch => {
+const DestroyToken = () => dispatch => {
   const data = {
     token: ""
   };
@@ -20,3 +18,5 @@ export const DestroyToken = () => dispatch => {
     data
   });
 };
+
+export { SetToken, DestroyToken };

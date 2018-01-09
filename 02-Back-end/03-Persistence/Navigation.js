@@ -1,5 +1,5 @@
 import NavigationRepository from "../02-Repository/NavigationRepository";
-import { Language } from "../../04-Config";
+import { Language } from "../../04-Config/Index";
 
 class NavigationPersistence {
   constructor() {
