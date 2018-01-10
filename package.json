@@ -9,8 +9,9 @@
     "lint": "npm run lint:eslint && npm run lint:stylelint",
     "client:test": "jest",
     "client:updSnp": "jest --updateSnapshot",
-    "client:dev": "webpack-dev-server",
-    "client:prod": "webpack",
+    "client:dev": "webpack-dev-server --config webpack.config.dev.js",
+    "client:prod": "webpack --config webpack.config.prod.js",
+    "client:prodLive": "nodemon 00-Build/Server.js",
     "server:dev": "nodemon 02-Back-end/Index.js"
   },
   "author": "",
@@ -49,7 +50,6 @@
     "webpack-dev-server": "^2.9.4"
   },
   "dependencies": {
-    "autoprefixer": "^7.1.6",
     "axios": "^0.17.1",
     "babel-polyfill": "^6.26.0",
     "babel-register": "^6.26.0",

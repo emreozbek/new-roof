@@ -1,8 +1,8 @@
 import React from "react";
-import { shallow, configure } from "enzyme";
+import { configure, shallow } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 
-import Wrapper from "../../03-Front-end/00-Page/Wrapper";
+import Wrapper from "../../03-Front-end/00-Page/Wrapper/Index";
 
 configure({ adapter: new Adapter() });
 

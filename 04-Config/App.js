@@ -1,10 +1,12 @@
 const AppConfig = {
+  client: {
+    port: 2000
+  },
   development: {
     port: 3000
   },
   host: "http://localhost",
   server: { port: 4000 },
-  client: {},
   project: {
     title: "Material CMS",
     version: "V.1",

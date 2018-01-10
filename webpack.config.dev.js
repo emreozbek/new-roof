@@ -1,10 +1,10 @@
-var config = require("./04-Config/App"),
-  path = require("path");
+const config = require("./04-Config/App");
+const path = require("path");
 
 module.exports = {
   entry: "./03-Front-end/App.js",
   output: {
-    filename: "./00-Build/bundle.js"
+    filename: "./bundle.js"
   },
   module: {
     rules: [
@@ -29,7 +29,8 @@ module.exports = {
     ]
   },
   devServer: {
-    contentBase: path.join(__dirname, "00-build"),
+    contentBase: path.join(__dirname, "/00-Build"),
+    publicPath: "/",
     watchContentBase: true,
     historyApiFallback: true,
     port: config.development.port,

@@ -1,11 +1,12 @@
 import React from "react";
 import { BrowserRouter, Route, Switch, withRouter } from "react-router-dom";
 import Grid from "material-ui/Grid";
-import { MuiThemeProvider, createMuiTheme } from "material-ui/styles";
+import { createMuiTheme, MuiThemeProvider } from "material-ui/styles";
 
-import * as Pages from "./Index";
-import BrownTheme from "../02-Theme/Brown";
-import * as Layouts from "../01-Component/Layouts/Index";
+import * as Pages from "../Index";
+import BrownTheme from "../../02-Theme/Brown";
+import * as Layouts from "../../01-Component/Layouts/Index";
+import "./Style.scss";
 
 const theme = createMuiTheme(BrownTheme);
 
