@@ -1,8 +1,8 @@
-const config = require("./04-Config/App");
+const config = require( "./Config/App" );
 const path = require("path");
 
 module.exports = {
-  entry: "./03-Front-end/App.js",
+	entry: "./Client/App.js",
   output: {
     filename: "./bundle.js"
   },
@@ -29,7 +29,7 @@ module.exports = {
     ]
   },
   devServer: {
-    contentBase: path.join(__dirname, "/00-Build"),
+	  contentBase: path.join( __dirname, "/Build" ),
     publicPath: "/",
     watchContentBase: true,
     historyApiFallback: true,

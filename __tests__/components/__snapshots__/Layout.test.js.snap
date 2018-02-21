@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<Layout
+  actions={
+    Object {
+      "DestroyToken": [Function],
+      "SetToken": [Function],
+    }
+  }
+  classes={Object {}}
+/>
+`;

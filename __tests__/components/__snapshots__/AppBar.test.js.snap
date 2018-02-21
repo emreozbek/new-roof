@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<AppBarComp
+  HandleMenu={[Function]}
+  Logout={[Function]}
+  classes={
+    Object {
+      "acccountAlign": "AppBarComp-acccountAlign-1",
+      "appBar": "AppBarComp-appBar-3",
+      "appBarShift": "AppBarComp-appBarShift-4",
+      "flex": "AppBarComp-flex-2",
+    }
+  }
+  menuState={false}
+  title=""
+/>
+`;

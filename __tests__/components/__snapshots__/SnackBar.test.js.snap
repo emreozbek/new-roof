@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<withStyles(Snackbar)
+  SnackbarContentProps={
+    Object {
+      "aria-describedby": "message-id",
+    }
+  }
+  action={
+    Array [
+      <withStyles(IconButton)
+        aria-label="Close"
+        color="inherit"
+        onClick={[Function]}
+      >
+        <pure(Close) />
+      </withStyles(IconButton)>,
+    ]
+  }
+  anchorOrigin={
+    Object {
+      "horizontal": "center",
+      "vertical": "top",
+    }
+  }
+  autoHideDuration={6000}
+  message={
+    <span
+      id="message-id"
+    >
+      
+    </span>
+  }
+  onClose={[Function]}
+  open={false}
+/>
+`;

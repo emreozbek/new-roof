@@ -11,8 +11,8 @@
     "client:updSnp": "jest --updateSnapshot",
     "client:dev": "webpack-dev-server --config webpack.config.dev.js",
     "client:prod": "webpack --config webpack.config.prod.js",
-    "client:prodLive": "nodemon 00-Build/Server.js",
-    "server:dev": "nodemon 02-Back-end/Index.js"
+    "client:prodLive": "nodemon Build/Server.js",
+    "server:dev": "nodemon Server/Index.js"
   },
   "author": "",
   "license": "ISC",
@@ -86,7 +86,8 @@
   },
   "eslintIgnore": [
     "webpack.config.js",
-    "postcss.config.js"
+    "postcss.config.js",
+    "00-Build/bundle.js"
   ],
   "jest": {
     "snapshotSerializers": [

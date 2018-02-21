@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<Login
+  actions={
+    Object {
+      "DestroyToken": [Function],
+      "SetToken": [Function],
+    }
+  }
+  classes={
+    Object {
+      "actions": "Login-actions-4",
+      "button": "Login-button-2",
+      "card": "Login-card-3",
+      "copyright": "Login-copyright-6",
+      "processing": "Login-processing-5",
+      "progress": "Login-progress-1",
+    }
+  }
+  url="http://localhost:4000/User/Login"
+/>
+`;

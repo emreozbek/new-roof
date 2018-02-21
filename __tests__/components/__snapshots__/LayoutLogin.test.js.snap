@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<LayoutLogin
+  classes={
+    Object {
+      "background": "LayoutLogin-background-1",
+      "grid": "LayoutLogin-grid-2",
+      "logo": "LayoutLogin-logo-3",
+    }
+  }
+/>
+`;

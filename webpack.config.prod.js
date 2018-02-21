@@ -1,9 +1,9 @@
 const webpack = require( "webpack" );
 
 module.exports = {
-	entry: "./03-Front-end/App.js",
+	entry: "./Client/App.js",
 	output: {
-		filename: "./00-Build/bundle.js"
+		filename: "./Build/bundle.js"
 	},
 	module: {
 		rules: [
